@@ -29,7 +29,7 @@ export default async function HomePage() {
       </div>
       
       <h2 className="text-xl">Connecting dorms with their tenants</h2>
-      <Link href="/login">
+      <Link href="/dashboard">
         <Button>Get Started</Button>
         
       </Link>
