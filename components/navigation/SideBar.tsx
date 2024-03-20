@@ -1,67 +1,119 @@
-"use client"
+"use client";
 
-
-import React from 'react'
-import Link from 'next/link';
-
-
+import React from "react";
+import Link from "next/link";
 
 // ShadcnUI components
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
 
 //React Icons
 
-import { usePathname } from 'next/navigation';
-import { ClipboardList, Users, LayoutDashboard, Home, CalendarDays, BellDot, Mail, BookText, MessagesSquare } from "lucide-react"
-
-
+import { usePathname } from "next/navigation";
+import {
+  ClipboardList,
+  Users,
+  LayoutDashboard,
+  Home,
+  CalendarDays,
+  BellDot,
+  Mail,
+  BookText,
+  MessagesSquare,
+  Settings,
+} from "lucide-react";
+import Image from "next/image";
 
 export default function Sidebar() {
-
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const navigationItems = [
-    { path: '/dashboard', icon: <LayoutDashboard fontSize={20} />, label: 'Dashboard' },
-    { path: '/dashboard/tasks', icon: <Mail fontSize={20} />, label: 'Inbox' },
-    { path: '/dashboard/users', icon: <Users fontSize={20} />, label: 'Users' },
-    { path: '/dashboard/groups', icon: <MessagesSquare fontSize={20} />, label: 'Groups' },
-    { path: '/dashboard/events', icon: <CalendarDays fontSize={20} />, label: 'Events' },
-    { path: '/dashboard/alerts', icon: <BellDot fontSize={20} />, label: 'Alerts' },
-    { path: '/dashboard/info', icon: <BookText fontSize={20} />, label: 'Information' },
+    {
+      path: "/dashboard",
+      icon: <LayoutDashboard fontSize={20} />,
+      label: "Dashboard",
+    },
+    { path: "/dashboard/tasks", icon: <Mail fontSize={20} />, label: "Inbox" },
+    { path: "/dashboard/users", icon: <Users fontSize={20} />, label: "Users" },
+    {
+      path: "/dashboard/groups",
+      icon: <MessagesSquare fontSize={20} />,
+      label: "Groups",
+    },
+    {
+      path: "/dashboard/events",
+      icon: <CalendarDays fontSize={20} />,
+      label: "Events",
+    },
+    {
+      path: "/dashboard/alerts",
+      icon: <BellDot fontSize={20} />,
+      label: "Alerts",
+    },
+    {
+      path: "/dashboard/info",
+      icon: <Settings fontSize={20} />,
+      label: "Settings",
+    },
   ];
 
   return (
-    <div className='flex flex-col justify-between items-center h-full border-r bg-white dark:bg-black'>
-      <div className='flex flex-col justify-start text-slate-700 dark:text-slate-300'>        
-        <div className='py-5 pl-6'>
-          
-          <Link href='/' className='flex flex-row gap-3'>
-              <Home />
-              <h1 className='font-bold text-md hidden xl:block'>DormHive</h1>
+    <div className="flex flex-col justify-between items-center h-full border-r bg-white dark:bg-black">
+      <div className="flex flex-col justify-start text-slate-700 dark:text-slate-300">
+        <div className="py-5 pl-6">
+          <Link href="/" className="flex flex-row items-center gap-3">
+            <div className="relative w-5 h-5 scale-125">
+              <Image
+                alt="DormHive"
+                src={"/logo.png"}
+                width={100}
+                height={100}
+                style={{ width: "100%", height: "100%" }} // optional
+              />
+            </div>
+
+            <h1 className="font-bold text-md text-primary hidden xl:block">
+              dormhive
+            </h1>
           </Link>
         </div>
-        
+
         {/* Show tooltip and only icon in smaller screens */}
-        <ul className='flex flex-col'>
+        <ul className="flex flex-col">
           {navigationItems.map((item, index) => (
             <TooltipProvider key={index}>
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <li className='flex flex-row justify-start group'>
-                    <div className={`h-full w-1 ${pathname === item.path ? 'bg-slate-500' : 'group-hover:bg-slate-500'}`} />
+                  <li className="flex flex-row justify-start group">
+                    <div
+                      className={`h-full w-1 ${
+                        pathname === item.path
+                          ? "bg-slate-500"
+                          : "group-hover:bg-slate-500"
+                      }`}
+                    />
                     <Link
                       href={item.path}
-                      className={`flex flex-grow flex-row items-center gap-3 py-5 px-5 ${pathname === item.path ? 'bg-slate-100 dark:bg-gray-900' : 'group-hover:bg-slate-100 dark:hover:bg-gray-900'}`}
+                      className={`flex flex-grow flex-row items-center gap-3 py-5 px-5 ${
+                        pathname === item.path
+                          ? "bg-slate-100 dark:bg-gray-900"
+                          : "group-hover:bg-slate-100 dark:hover:bg-gray-900"
+                      }`}
                     >
                       {item.icon}
-                      <p className='text-sm hidden xl:block'>{item.label}</p>
+                      <p className="text-sm hidden xl:block">{item.label}</p>
                     </Link>
-
                   </li>
                 </TooltipTrigger>
-                <TooltipContent className='xl:hidden' side='right'>{item.label}</TooltipContent>
+                <TooltipContent className="xl:hidden" side="right">
+                  {item.label}
+                </TooltipContent>
               </Tooltip>
-            </TooltipProvider>  
+            </TooltipProvider>
           ))}
         </ul>
       </div>

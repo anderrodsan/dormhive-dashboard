@@ -1,0 +1,71 @@
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.flex-start {
+  @apply flex justify-start items-center;
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-col-between {
+  @apply flex flex-col justify-between;
+}
+
+.flex-col-center {
+  @apply flex flex-col justify-center items-center;
+}
+
+.title {
+  @apply font-bold text-4xl;
+}
+
+.gradient1 {
+  @apply bg-gradient-to-b from-stone-50 to-white dark:bg-gradient-to-b dark:from-slate-950 dark:to-black z-20;
+}
+
+.gradient2 {
+  @apply bg-gradient-to-b from-stone-100/[0.5] to-stone-200/[0.5] dark:bg-gradient-to-b dark:from-slate-900/[0.5] dark:to-slate-800/[0.5];
+}
+
+.gradient-blue {
+  @apply bg-gradient-to-b from-[#1D89E4] to-[#1d8ae4a3];
+}
+
+.gradient-orange {
+  @apply bg-gradient-to-b from-[#E4781D] to-[#e4771db1];
+}
+
+.gradient-darkblue {
+  @apply bg-gradient-to-b from-blue-900 to-[#0b365a];
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.bg-primary {
+  @apply bg-[#1D89E4];
+}
+
+.text-primary {
+  @apply text-[#1D89E4];
+}
+
+.section {
+  @apply w-full flex flex-col gap-5 items-center py-14 px-5 md:px-10 xl:px-40;
+}
+
+.title {
+  @apply text-4xl md:text-6xl font-bold text-center text-primary;
+}
+
+.subtitle {
+  @apply text-3xl font-bold text-primary;
+}
